@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Http, Headers, RequestOptionsArgs, RequestOptions } from '@angular/http';
 import { HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from "@angular/router";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'login',
@@ -15,12 +16,7 @@ export class LoginComponent {
     password: new FormControl('', Validators.required)
   });
 
-  invalidLogin: boolean;
-  private tokenUrl = "http://localhost:8080/oauth/token";
-
-  constructor(private http: Http, private router: Router) {
-
-  }
+  constructor(private authService: AuthService) { }
 
   get username() {
     return this.form.get('username');
@@ -37,27 +33,6 @@ export class LoginComponent {
       password: params.password
     }
 
-    let header = new Headers();
-    header.append('Authorization', 'Basic Ymxvb2Rlckhvb2RBcHA6TWFZemtTam1relBDNTdM');
-    header.append('Content-Type', undefined);
-
-    let options = new RequestOptions({
-      headers: header,
-      params: userDetails
-    });
-
-    this.http.post(this.tokenUrl, null, options)
-    .subscribe(response => {
-      if (response.status == 200) {
-        let result = response.json();
-        if (result && result.access_token) {
-          localStorage.setItem('token', result.access_token);
-          //this.router.navigate(['/dashboard']);
-        }
-      } else {
-        this.router.navigate(['/error']);
-      }
-    });
-
+    this.authService.login(userDetails);
   }
 }
