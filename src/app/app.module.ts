@@ -7,6 +7,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { RouterModule, Routes } from '@angular/router';
       { path: 'signup', component: SignupFormComponent}
     ])
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
