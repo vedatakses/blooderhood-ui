@@ -26,7 +26,7 @@ export class AuthService {
           let result = response.json();
           if (result && result.access_token) {
             localStorage.setItem('token', result.access_token);
-            //this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard']);
           }
         } else {
           this.router.navigate(['/error']);
