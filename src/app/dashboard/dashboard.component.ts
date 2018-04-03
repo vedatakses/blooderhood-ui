@@ -4,6 +4,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import { DonationService } from '../services/donation.service';
 import { DonationRequest } from '../models/DonationRequest.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,11 +18,14 @@ export class DashboardComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private donationService: DonationService) {
+  constructor(private donationService: DonationService, private router: Router) {
 
   }
 
   ngOnInit() {
+    if (localStorage.getItem('token') === null) {
+      this.router.navigate(['/login']);
+    }
   }
 
   /**
