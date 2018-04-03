@@ -6,9 +6,21 @@
   
   .mat-table {
     overflow: auto;
+    display: block;
     max-height: 500px;
   }
 
-  .mat-header-cell.mat-sort-header-sorted {
-    color: black;
+  .mat-row, .mat-header-row {
+    display: flex;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    align-items: center;
+    min-height: mat-row-height;
+    padding: 0 mat-row-horizontal-padding;
+  }
+  
+  .mat-cell, .mat-header-cell {
+    flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
   }

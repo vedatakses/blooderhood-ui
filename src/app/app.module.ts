@@ -9,10 +9,12 @@ import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { DonationService } from './services/donation.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { MatSortModule } from '@angular/material';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -37,7 +40,10 @@ import { MatSortModule } from '@angular/material';
       { path: 'dashboard', component: DashboardComponent}
     ])
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService, 
+    DonationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

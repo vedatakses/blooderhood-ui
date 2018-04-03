@@ -3,37 +3,43 @@
     <mat-table #table [dataSource]="dataSource" matSort>
   
       <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <mat-header-cell  *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
   
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <!-- Blood Type Column -->
+      <ng-container matColumnDef="bloodGroup">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Blood Group </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bloodGroup}} </mat-cell>
       </ng-container>
   
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      <!-- City Column -->
+      <ng-container matColumnDef="city">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
       </ng-container>
   
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      <!-- Hospital Column -->
+      <ng-container matColumnDef="hospital">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Hospital </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.hospital}} </mat-cell>
+      </ng-container>
+
+      <!-- Contact Column -->
+      <ng-container matColumnDef="contact">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Contact </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
       </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   
-    <mat-paginator #paginator
+    <!-- <mat-paginator #paginator
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 20]"
                    [showFirstLastButtons]="true">
-    </mat-paginator>
+    </mat-paginator> -->
   </div>
   
