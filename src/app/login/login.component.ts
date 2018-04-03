@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Http, Headers, RequestOptionsArgs, RequestOptions } from '@angular/http';
 import { HttpParams, HttpHeaders } from '@angular/common/http';
@@ -10,13 +10,19 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   form = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
+
+  ngOnInit() {
+    if (localStorage.getItem('token') != null) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   get username() {
     return this.form.get('username');

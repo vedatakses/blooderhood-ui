@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  private usersUrl = "http://localhost:8080/api/users";
+  private usersUrl = 'http://localhost:8080/api/users';
   private tokenUrl = 'http://localhost:8080/oauth/token';
   private basicToken = 'Basic Ymxvb2Rlckhvb2RBcHA6TWFZemtTam1relBDNTdM';
 
@@ -26,7 +26,7 @@ export class AuthService {
           let result = response.json();
           if (result && result.access_token) {
             localStorage.setItem('token', result.access_token);
-            //this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard']);
           }
         } else {
           this.router.navigate(['/error']);
@@ -47,5 +47,10 @@ export class AuthService {
         this.router.navigate(['/error']);
       }
     });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }
