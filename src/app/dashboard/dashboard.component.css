@@ -24,3 +24,11 @@
     overflow: hidden;
     word-wrap: break-word;
   }
+
+  .mat-toolbar-menu {
+    flex: 1;
+  }
+
+  .mat-button-on-menu {
+    align-self: baseline;
+  }

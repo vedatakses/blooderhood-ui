@@ -3,6 +3,7 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import { DonationService } from '../services/donation.service';
+import { AuthService } from '../services/auth.service';
 import { DonationRequest } from '../models/DonationRequest.model';
 import { Router } from '@angular/router';
 
@@ -18,7 +19,8 @@ export class DashboardComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private donationService: DonationService, private router: Router) {
+  constructor(private donationService: DonationService, 
+    private authService: AuthService, private router: Router) {
 
   }
 
