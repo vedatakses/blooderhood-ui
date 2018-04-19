@@ -23,7 +23,7 @@ export class DonationService {
     return this.httpClient.get<DonationRequest[]>(this.donationsUrl, 
       { headers: requestHeaders }); */
 
-  getDonations() {
+  getDonations(): Observable<DonationRequest[]> {
     var count = 0;
     let reqHeader = new Headers();
     reqHeader.append('Authorization', this.bearerToken);
