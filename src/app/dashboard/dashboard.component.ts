@@ -38,6 +38,10 @@ export class DashboardComponent {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   } */
+
+  goToSubscriptions() {
+    this.router.navigate(['/subscriptions']);
+  }
 }
 
 export class DonationDataSource extends DataSource<any> {

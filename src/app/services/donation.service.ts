@@ -8,20 +8,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DonationService {
-  private donationsUrl = 'http://localhost:8080/api/donations/requests';
-  private bearerToken = 'Bearer '.concat(localStorage.getItem('token'));
-  private contentType = 'application/json';
-  private header = new Headers();
+  donationsUrl = 'http://localhost:8080/api/donations/requests';
+  bearerToken = 'Bearer '.concat(localStorage.getItem('token'));
+  contentType = 'application/json';
+  header = new Headers();
 
   constructor(private httpClient: HttpClient, private http: Http) { }
-
-  /* getDonations(): Observable<DonationRequest[]> {
-    let requestHeaders = new HttpHeaders();
-    requestHeaders.set('Authorization', this.bearerToken);
-    requestHeaders.set('Content-Type', this.contentType);
-
-    return this.httpClient.get<DonationRequest[]>(this.donationsUrl, 
-      { headers: requestHeaders }); */
 
   getDonations() {
     var count = 0;

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
@@ -14,16 +14,22 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatMenuModule } from '@angular/material/menu'
 import { HttpClientModule } from '@angular/common/http';
+import { Subscription } from 'rxjs/Subscription';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { DataTableModule } from 'angular-4-data-table';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupFormComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SubscriptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpModule,
     HttpClientModule,
     MatTableModule,
+    MatSelectModule,
     MatPaginatorModule,
     MatSortModule,
     MatToolbarModule,
@@ -41,7 +48,8 @@ import { HttpClientModule } from '@angular/common/http';
       { path: '', component: LoginComponent},
       { path: 'login', component: LoginComponent},
       { path: 'signup', component: SignupFormComponent},
-      { path: 'dashboard', component: DashboardComponent}
+      { path: 'dashboard', component: DashboardComponent},
+      { path: 'subscriptions', component: SubscriptionsComponent}
     ])
   ],
   providers: [
