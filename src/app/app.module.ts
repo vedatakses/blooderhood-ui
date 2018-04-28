@@ -21,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { DataTableModule } from 'angular-4-data-table';
 
 @NgModule({
   declarations: [
