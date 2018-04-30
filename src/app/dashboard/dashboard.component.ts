@@ -19,7 +19,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   dataSource: MatTableDataSource<DonationRequest>;
   
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 

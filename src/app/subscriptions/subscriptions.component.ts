@@ -1,27 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-subscriptions',
   templateUrl: './subscriptions.component.html',
   styleUrls: ['./subscriptions.component.css']
 })
-export class SubscriptionsComponent implements OnInit {
-  selected = 'option2';
+export class SubscriptionsComponent {
+  bloodGroup: string;
+  location: string;
 
   constructor(private authService: AuthService, private router: Router) { }
-
-  ngOnInit() {
-  }
 
   goToHome() {
     this.router.navigate(['/dashboard']);
   }
 
-  add(group) {
-    console.log('add clicked!!!');
-    console.log(group);
+  add() {
+    if (this.bloodGroup != undefined && this.location != undefined) {
+      console.log(this.bloodGroup);
+      console.log(this.location);
+      // TODO : add subscription service
+      //subscriptionService.addSubscription(this.bloodGroup, this.location);
+    }
+  }
+
+  delete() {
+    if (this.bloodGroup != undefined && this.location != undefined) {
+      console.log(this.bloodGroup);
+      console.log(this.location);
+      // TODO : add subscription service
+      //subscriptionService.deleteSubscription(this.bloodGroup, this.location);
+    }
   }
 
   bloodGroups = [
@@ -36,7 +48,7 @@ export class SubscriptionsComponent implements OnInit {
   ];
 
   locations = [
-    {value: 'ADANA)'}, {value: 'ADIYAMAN'}, {value: 'AFYON'}, {value: 'AĞRI'},
+    {value: 'ADANA'}, {value: 'ADIYAMAN'}, {value: 'AFYON'}, {value: 'AĞRI'},
     {value: 'AMASYA'}, {value: 'ANKARA'}, {value: 'ANTALYA'}, {value: 'ARTVİN'},
     {value: 'AYDIN'}, {value: 'BALIKESİR'}, {value: 'BİLECİK'}, {value: 'BİNGÖL'},
     {value: 'BİTLİS'}, {value: 'BOLU'}, {value: 'BURDUR'}, {value: 'BURSA'},

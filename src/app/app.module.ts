@@ -13,7 +13,7 @@ import { DonationService } from './services/donation.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material';
+import { MatSortModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatMenuModule } from '@angular/material/menu'
@@ -37,8 +37,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
+    MatInputModule,
     MatTableModule,
     MatSelectModule,
+    MatAutocompleteModule,
     MatPaginatorModule,
     MatSortModule,
     MatToolbarModule,
