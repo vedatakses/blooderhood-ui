@@ -1,0 +1,35 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+  
+.example-form-2 {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+  
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+  
+.example-container > * {
+  width: 50%;
+  align-self: center;
+}
+
+.header-manage-subscriptions {
+  text-align: center;
+  margin: 20px;
+}
+
+.example-container-button {
+  margin: 20px;
+  text-align: center;
+}

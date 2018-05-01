@@ -32,3 +32,23 @@
   .mat-button-on-menu {
     align-self: baseline;
   }
+
+  .example-button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .create-donation {
+    margin-top: 50px;
+  }
+
+  .example-button-row {
+    margin-top: 20px;
+  }
+
+  .header-all-donation-requests {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }

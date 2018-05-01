@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
@@ -6,22 +6,31 @@ import { DonationService } from '../services/donation.service';
 import { AuthService } from '../services/auth.service';
 import { DonationRequest } from '../models/DonationRequest.model';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit, OnDestroy {
   displayedColumns = ['id', 'bloodGroup', 'city', 'hospital', 'contact'];
-  dataSource = new DonationDataSource(this.donationService);
-
+  donationRequests: DonationRequest[];
+  subscription: Subscription;
+  dataSource: MatTableDataSource<DonationRequest>;
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private donationService: DonationService, 
     private authService: AuthService, private router: Router) {
-
+      this.subscription = this.donationService.getDonations()
+        .subscribe(donations => {
+          this.donationRequests = donations;
+          this.dataSource = new MatTableDataSource(donations);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
   }
 
   ngOnInit() {
@@ -30,22 +39,15 @@ export class DashboardComponent {
     }
   }
 
-  /**
-   * Set the paginator after the view init since this component will
-   * be able to query its view for the initialized paginator.
-   */
-/*   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  } */
-}
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
-export class DonationDataSource extends DataSource<any> {
-  constructor(private donationService: DonationService) {
-    super();
+  goToSubscriptions() {
+    this.router.navigate(['/subscriptions']);
   }
-  connect(): Observable<DonationRequest[]> {
-    return this.donationService.getDonations();
+
+  createDonation() {
+    this.router.navigate(['/donation-form']);
   }
-  disconnect() {}
 }

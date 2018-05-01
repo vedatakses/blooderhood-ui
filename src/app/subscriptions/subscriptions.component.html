@@ -1,0 +1,43 @@
+<div class="mat-toolbar-menu">
+  <mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="goToHome()">Home</button>
+      <button mat-menu-item>Subscriptions</button>
+      <button mat-menu-item (click)="authService.logout()">Logout</button>
+    </mat-menu>
+  </mat-toolbar>
+</div>
+<h2 class="header-manage-subscriptions">Manage Subscriptions</h2>
+<div class="example-container">
+  <mat-form-field>
+    <mat-select placeholder="Blood Group" [(ngModel)]="bloodGroup">
+      <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup.value">
+        {{ bloodGroup.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="City" [(ngModel)]="city">
+      <mat-option *ngFor="let city of cities" [value]="city.value">
+        {{ city.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="example-container-button">
+    <button mat-raised-button (click)="add()">Subscribe</button>
+    <button mat-raised-button (click)="goToHome()">Cancel</button>
+  </div>
+</div>
+<div class="example-container">
+  <mat-form-field>
+    <mat-select placeholder="Subscription" [(ngModel)]="deletingSubscription">
+      <mat-option *ngFor="let subscription of userSubscriptions" [value]="subscription">
+        {{ subscription.bloodGroupType }}, {{ subscription.location }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="example-container-button">
+    <button mat-raised-button (click)="delete()">Delete</button>
+  </div>
+</div>
