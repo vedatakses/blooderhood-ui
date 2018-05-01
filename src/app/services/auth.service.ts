@@ -34,6 +34,27 @@ export class AuthService {
       });
   }
 
+  getUserId(username) {
+    let header = new Headers();
+    header.append('Authorization', this.basicToken);
+    header.append('Content-Type', undefined);
+
+    let options = new RequestOptions({
+      headers: header
+    });
+
+    let userIdUrl = this.usersUrl + '/find?username=' + username;
+    this.http.get(userIdUrl, options).subscribe(response => {
+      if (response.status == 200) {
+        let userId = response.text();
+        if (response) {
+          console.log('inside result check');
+          localStorage.setItem('userId', userId);
+        }
+      }
+    });
+  }
+
   signUp(user: any) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
