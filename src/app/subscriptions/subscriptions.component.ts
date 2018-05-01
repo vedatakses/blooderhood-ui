@@ -1,21 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { SubscriptionService } from '../services/subscription.service';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
+import { UserSubscription } from '../models/UserSubscription.model';
 
 @Component({
   selector: 'app-subscriptions',
   templateUrl: './subscriptions.component.html',
   styleUrls: ['./subscriptions.component.css']
 })
-export class SubscriptionsComponent {
+export class SubscriptionsComponent implements OnDestroy {
+  subscription: Subscription;
+  userSubscriptions: UserSubscription[];
   bloodGroup: string;
-  location: string;
+  city: string;
+  deletingSubscription: UserSubscription;
 
-  constructor(private authService: AuthService, 
-    private router: Router, 
+  constructor(private authService: AuthService,
+    private router: Router,
     private subscriptionService: SubscriptionService) {
+    this.subscription = this.getAllUserSubscriptions();
+  }
+
+  getAllUserSubscriptions() {
+    return this.subscriptionService.getAllSubscriptions()
+    .subscribe(userSubscriptions => {
+      this.userSubscriptions = userSubscriptions;
+    });
   }
 
   goToHome() {
@@ -23,24 +36,30 @@ export class SubscriptionsComponent {
   }
 
   add() {
-    if (this.bloodGroup != undefined && this.location != undefined) {
-      console.log(this.bloodGroup);
-      console.log(this.location);
-      // TODO : add subscription service
-      this.subscriptionService.addSubscription(this.bloodGroup, this.location)
+    if (this.bloodGroup != undefined && this.city != undefined) {
+      console.log('Adding subscription with bloodGroup: ' + this.bloodGroup + ' and city: ' + this.city);
+      this.subscriptionService.addSubscription(this.bloodGroup, this.city)
         .subscribe(res => {
-        console.log(res);
-      });
+          console.log(res);
+          this.subscription = this.getAllUserSubscriptions();
+        });
     }
   }
 
   delete() {
-    if (this.bloodGroup != undefined && this.location != undefined) {
-      console.log(this.bloodGroup);
-      console.log(this.location);
-      // TODO : add subscription service
-      //subscriptionService.deleteSubscription(this.bloodGroup, this.location);
+    console.log(this.deletingSubscription);
+    if (this.deletingSubscription.id != undefined) {
+      console.log('Removing subsctiption with id: ' + this.deletingSubscription.id);
+      this.subscriptionService.removeSubscription(this.deletingSubscription)
+        .subscribe(res => {
+          console.log(res);
+          this.subscription = this.getAllUserSubscriptions();
+        });
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   bloodGroups = [
@@ -54,7 +73,7 @@ export class SubscriptionsComponent {
     { value: 'AB RH (-)' },
   ];
 
-  locations = [
+  cities = [
     { value: 'ADANA' }, { value: 'ADIYAMAN' }, { value: 'AFYON' }, { value: 'AĞRI' },
     { value: 'AMASYA' }, { value: 'ANKARA' }, { value: 'ANTALYA' }, { value: 'ARTVİN' },
     { value: 'AYDIN' }, { value: 'BALIKESİR' }, { value: 'BİLECİK' }, { value: 'BİNGÖL' },

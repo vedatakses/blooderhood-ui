@@ -33,7 +33,7 @@ export class DonationService {
   }
 
   createDonation(donation) {
-    let url = this.donationsUrl + '/requests';
+    let url = this.donationsUrl;
     var count = 0;
     let reqHeader = new Headers();
     reqHeader.append('Authorization', this.bearerToken);

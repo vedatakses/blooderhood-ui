@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DonationFormComponent implements OnInit {
   bloodGroup: string;
-  location: string;
+  city: string;
   hospital: string;
   contact: string;
 
@@ -19,15 +19,18 @@ export class DonationFormComponent implements OnInit {
   }
 
   createDonation() {
-    if (this.bloodGroup != undefined && this.location != undefined
+    if (this.bloodGroup != undefined && this.city != undefined
       && this.hospital != undefined && this.contact != undefined) {
       let donation = {
         bloodGroup: this.bloodGroup,
-        location: this.location,
+        city: this.city,
         hospital: this.hospital,
-        conact: this.contact
+        contact: this.contact
       }
-      this.donationService.createDonation(donation);
+      this.donationService.createDonation(donation)
+      .subscribe(res => {
+        console.log(res);
+      });
     }
   }
 
@@ -46,7 +49,7 @@ export class DonationFormComponent implements OnInit {
     { value: 'AB RH (-)' },
   ];
 
-  locations = [
+  cities = [
     { value: 'ADANA' }, { value: 'ADIYAMAN' }, { value: 'AFYON' }, { value: 'AĞRI' },
     { value: 'AMASYA' }, { value: 'ANKARA' }, { value: 'ANTALYA' }, { value: 'ARTVİN' },
     { value: 'AYDIN' }, { value: 'BALIKESİR' }, { value: 'BİLECİK' }, { value: 'BİNGÖL' },
