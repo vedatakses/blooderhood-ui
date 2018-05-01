@@ -30,6 +30,7 @@ export class DonationFormComponent implements OnInit {
       this.donationService.createDonation(donation)
       .subscribe(res => {
         console.log(res);
+        this.router.navigate(['/dashboard']);
       });
     }
   }

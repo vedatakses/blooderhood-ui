@@ -79,7 +79,7 @@ export class SubscriptionsComponent implements OnDestroy {
     { value: 'AYDIN' }, { value: 'BALIKESİR' }, { value: 'BİLECİK' }, { value: 'BİNGÖL' },
     { value: 'BİTLİS' }, { value: 'BOLU' }, { value: 'BURDUR' }, { value: 'BURSA' },
     { value: 'ÇANAKKALE' }, { value: 'ÇANKIRI' }, { value: 'ÇORUM' }, { value: 'DENİZLİ' },
-    { value: 'DİYARBAKIR)' }, { value: 'EDİRNE' }, { value: 'ELAZIĞ' }, { value: 'ERZİNCAN' },
+    { value: 'DİYARBAKIR' }, { value: 'EDİRNE' }, { value: 'ELAZIĞ' }, { value: 'ERZİNCAN' },
     { value: 'ERZURUM' }, { value: 'ESKİŞEHİR' }, { value: 'GAZİANTEP' }, { value: 'GİRESUN' },
     { value: 'GÜMÜŞHANE' }, { value: 'HAKKARİ' }, { value: 'HATAY' }, { value: 'ISPARTA' },
     { value: 'İÇEL' }, { value: 'İSTANBUL' }, { value: 'İZMİR' }, { value: 'KARS' },

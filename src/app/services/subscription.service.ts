@@ -13,7 +13,7 @@ export class SubscriptionService {
 
   addSubscription(bloodGroup: string, city: string) {
     let params = new URLSearchParams();
-    let userId = 'a0f989b7-c671-4c14-8ea0-0529834d03b7';
+    let userId = localStorage.getItem('userId');
     let url = this.subscriptionsUrl + '/add?userId=' + userId +
       '&type=' + bloodGroup + '&location=' + city;
     let requestHeaders = new Headers();
@@ -29,7 +29,7 @@ export class SubscriptionService {
 
   getAllSubscriptions() {
     let params = new URLSearchParams();
-    let userId = 'a0f989b7-c671-4c14-8ea0-0529834d03b7';
+    let userId = localStorage.getItem('userId');
     let url = this.subscriptionsUrl + "?userId=" + userId;
     let requestHeaders = new Headers();
     requestHeaders.set('Authorization', this.bearerToken);

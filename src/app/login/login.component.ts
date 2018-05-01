@@ -40,5 +40,6 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(userDetails);
+    this.authService.getUserId(userDetails.username);
   }
 }
