@@ -46,4 +46,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   goToSubscriptions() {
     this.router.navigate(['/subscriptions']);
   }
+
+  createDonation() {
+    this.router.navigate(['/donation-form']);
+  }
 }

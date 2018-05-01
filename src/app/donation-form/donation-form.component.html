@@ -1,0 +1,27 @@
+<div class="example-container">
+  <h2 style="text-align:center">Create a Donation Request</h2>
+  <mat-form-field>
+    <mat-select placeholder="Blood Group" [(ngModel)]="bloodGroup">
+      <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup.value">
+        {{ bloodGroup.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Location" [(ngModel)]="location">
+      <mat-option *ngFor="let location of locations" [value]="location.value">
+        {{ location.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Hospital" [(ngModel)]="hospital"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Contact" [(ngModel)]="contact"></textarea>
+  </mat-form-field>
+</div>
+<div layout="example-button-row" style="text-align:center">
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button (click)="createDonation()">Submit</button>
+</div>

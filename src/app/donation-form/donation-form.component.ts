@@ -1,46 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { SubscriptionService } from '../services/subscription.service';
+import { DonationService } from '../services/donation.service';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-subscriptions',
-  templateUrl: './subscriptions.component.html',
-  styleUrls: ['./subscriptions.component.css']
+  selector: 'app-donation-form',
+  templateUrl: './donation-form.component.html',
+  styleUrls: ['./donation-form.component.css']
 })
-export class SubscriptionsComponent {
+export class DonationFormComponent implements OnInit {
   bloodGroup: string;
   location: string;
+  hospital: string;
+  contact: string;
 
-  constructor(private authService: AuthService, 
-    private router: Router, 
-    private subscriptionService: SubscriptionService) {
+  constructor(private router: Router, private donationService: DonationService) { }
+
+  ngOnInit() {
   }
 
-  goToHome() {
-    this.router.navigate(['/dashboard']);
-  }
-
-  add() {
-    if (this.bloodGroup != undefined && this.location != undefined) {
-      console.log(this.bloodGroup);
-      console.log(this.location);
-      // TODO : add subscription service
-      this.subscriptionService.addSubscription(this.bloodGroup, this.location)
-        .subscribe(res => {
-        console.log(res);
-      });
+  createDonation() {
+    if (this.bloodGroup != undefined && this.location != undefined
+      && this.hospital != undefined && this.contact != undefined) {
+      let donation = {
+        bloodGroup: this.bloodGroup,
+        location: this.location,
+        hospital: this.hospital,
+        conact: this.contact
+      }
+      this.donationService.createDonation(donation);
     }
   }
 
-  delete() {
-    if (this.bloodGroup != undefined && this.location != undefined) {
-      console.log(this.bloodGroup);
-      console.log(this.location);
-      // TODO : add subscription service
-      //subscriptionService.deleteSubscription(this.bloodGroup, this.location);
-    }
+  cancel() {
+    this.router.navigate(["/dashboard"]);
   }
 
   bloodGroups = [
@@ -76,5 +68,4 @@ export class SubscriptionsComponent {
     { value: 'BARTIN' }, { value: 'ARDAHAN' }, { value: 'IĞDIR' }, { value: 'YALOVA' },
     { value: 'KARABÜK' }, { value: 'KİLİS' }, { value: 'OSMANİYE' }, { value: 'DÜZCE' },
   ]
-
 }

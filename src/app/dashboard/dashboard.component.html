@@ -1,55 +1,60 @@
 <div class="mat-toolbar-menu">
-    <mat-toolbar>
-        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Home</button>
-          <button mat-menu-item (click)= "goToSubscriptions()">Subscriptions</button>
-          <button mat-menu-item (click)="authService.logout()">Logout</button>
-        </mat-menu>
-      </mat-toolbar>
+  <mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Home</button>
+      <button mat-menu-item (click)="goToSubscriptions()">Subscriptions</button>
+      <button mat-menu-item (click)="authService.logout()">Logout</button>
+    </mat-menu>
+  </mat-toolbar>
 </div>
-<h2 style="text-align:center">All Donation Requests</h2>
+<div class="header-all-donation-requests">
+  <h2>All Donation Requests</h2>
+</div>
 <div class="example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="dataSource" matSort>
-  
-      <!-- Position Column -->
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-      </ng-container>
-  
-      <!-- Blood Type Column -->
-      <ng-container matColumnDef="bloodGroup">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Blood Group </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.bloodGroup}} </mat-cell>
-      </ng-container>
-  
-      <!-- City Column -->
-      <ng-container matColumnDef="city">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
-      </ng-container>
-  
-      <!-- Hospital Column -->
-      <ng-container matColumnDef="hospital">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Hospital </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.hospital}} </mat-cell>
-      </ng-container>
+  <mat-table #table [dataSource]="dataSource" matSort>
 
-      <!-- Contact Column -->
-      <ng-container matColumnDef="contact">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Contact </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
-      </ng-container>
-  
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-  
-    <mat-paginator #paginator
-                   [pageSize]="10"
-                   [pageSizeOptions]="[5, 10, 20]"
-                   [showFirstLastButtons]="true">
-    </mat-paginator>
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Blood Type Column -->
+    <ng-container matColumnDef="bloodGroup">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Blood Group </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bloodGroup}} </mat-cell>
+    </ng-container>
+
+    <!-- City Column -->
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+    </ng-container>
+
+    <!-- Hospital Column -->
+    <ng-container matColumnDef="hospital">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Hospital </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.hospital}} </mat-cell>
+    </ng-container>
+
+    <!-- Contact Column -->
+    <ng-container matColumnDef="contact">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Contact </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>
+
+<div class="create-donation">
+  <h2 style="text-align:center">Do you need a donation for someone?</h2>
+  <div class="example-button-row" style="text-align:center">
+    <button mat-raised-button color="warn" (click)="createDonation()">Create Request</button>
   </div>
-  
+</div>

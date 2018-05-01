@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { SubscriptionService } from './services/subscription.service';
+import { DonationFormComponent } from './donation-form/donation-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     SignupFormComponent,
     LoginComponent,
     DashboardComponent,
-    SubscriptionsComponent
+    SubscriptionsComponent,
+    DonationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -50,12 +53,14 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
       { path: 'login', component: LoginComponent},
       { path: 'signup', component: SignupFormComponent},
       { path: 'dashboard', component: DashboardComponent},
-      { path: 'subscriptions', component: SubscriptionsComponent}
+      { path: 'subscriptions', component: SubscriptionsComponent},
+      { path: 'donation-form', component: DonationFormComponent}
     ])
   ],
   providers: [
     AuthService, 
-    DonationService
+    DonationService,
+    SubscriptionService
   ],
   bootstrap: [AppComponent]
 })
