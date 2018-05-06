@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DonationService } from '../services/donation.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +14,7 @@ export class DonationFormComponent implements OnInit {
   hospital: string;
   contact: string;
 
-  constructor(private router: Router, private donationService: DonationService) { }
+  constructor(private authService: AuthService, private router: Router, private donationService: DonationService) { }
 
   ngOnInit() {
   }
@@ -37,6 +38,10 @@ export class DonationFormComponent implements OnInit {
 
   cancel() {
     this.router.navigate(["/dashboard"]);
+  }
+
+  goToSubscriptions() {
+    this.router.navigate(["/subscriptions"]);
   }
 
   bloodGroups = [

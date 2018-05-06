@@ -12,6 +12,9 @@ export class SubscriptionService {
   constructor(private http: Http) { }
 
   addSubscription(bloodGroup: string, city: string) {
+    if (bloodGroup.indexOf('\+') > 0) {
+      bloodGroup = bloodGroup.replace('+', '%2B');
+    }
     let params = new URLSearchParams();
     let userId = localStorage.getItem('userId');
     let url = this.subscriptionsUrl + '/add?userId=' + userId +
