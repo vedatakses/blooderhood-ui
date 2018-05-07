@@ -7,3 +7,8 @@
     width: 50%;
     align-self: center;
 }
+
+.create-donation-header {
+    text-align: center;
+    margin: 20px;
+}
