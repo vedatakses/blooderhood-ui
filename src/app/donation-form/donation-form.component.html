@@ -8,8 +8,10 @@
       </mat-menu>
     </mat-toolbar>
   </div>
+  <div>
+      <h2 class="create-donation-header" >Create a Donation Request</h2>
+  </div>
 <div class="example-container">
-  <h2 style="text-align:center">Create a Donation Request</h2>
   <mat-form-field>
     <mat-select placeholder="Blood Group" [(ngModel)]="bloodGroup">
       <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup.value">
