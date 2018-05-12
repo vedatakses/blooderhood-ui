@@ -46,6 +46,10 @@ export class SubscriptionsComponent implements OnDestroy {
     }
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
   delete() {
     console.log(this.deletingSubscription);
     if (this.deletingSubscription.id != undefined) {

@@ -44,6 +44,10 @@ export class DonationFormComponent implements OnInit {
     this.router.navigate(["/subscriptions"]);
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
   bloodGroups = [
     { value: 'A RH (+)' },
     { value: 'A RH (-)' },

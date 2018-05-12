@@ -1,6 +1,6 @@
 <form class="form-signin" #f="ngForm" (ngSubmit)="signIn(f.value)" [formGroup]="form">
   <h2 class="form-signin-heading">Please sign in</h2>
-  <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and/or password.</div>
+  <div class="alert alert-danger">Invalid username and/or password.</div>
   <label for="inputUsername" class="sr-only">Username</label>
   <input formControlName="username" type="username" id="inputUsername" name="username" ngModel class="form-control" placeholder="Username"
     required required autofocus>
