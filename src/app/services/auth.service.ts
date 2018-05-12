@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  private usersUrl = 'http://localhost:8080/api/users';
-  private tokenUrl = 'http://localhost:8080/oauth/token';
+  private usersUrl = 'http://blooderhood:8080/api/users';
+  private tokenUrl = 'http://blooderhood:8080/oauth/token';
   private basicToken = 'Basic Ymxvb2Rlckhvb2RBcHA6TWFZemtTam1relBDNTdM';
 
   constructor(private http: Http, private router: Router) { }
