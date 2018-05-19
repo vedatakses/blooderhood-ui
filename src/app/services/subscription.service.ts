@@ -4,7 +4,7 @@ import { UserSubscription } from '../models/UserSubscription.model';
 
 @Injectable()
 export class SubscriptionService {
-  subscriptionsUrl = 'http://blooderhood:8090/api/notification/subscriptions';
+  subscriptionsUrl = 'https://blooderhood.com:8443/api/notification/subscriptions';
   bearerToken = 'Bearer '.concat(localStorage.getItem('token'));
   contentType = 'application/json';
   header = new Headers();

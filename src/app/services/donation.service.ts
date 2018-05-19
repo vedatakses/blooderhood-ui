@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DonationService {
-  donationsUrl = 'http://blooderhood:8090/api/donations/requests';
+  donationsUrl = 'https://blooderhood.com:8443/api/donations/requests';
   bearerToken = 'Bearer '.concat(localStorage.getItem('token'));
   contentType = 'application/json';
   header = new Headers();
