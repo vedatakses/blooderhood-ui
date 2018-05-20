@@ -20,7 +20,6 @@ import { MatMenuModule } from '@angular/material/menu'
 import { HttpClientModule } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { SubscriptionService } from './services/subscription.service';
 import { DonationFormComponent } from './donation-form/donation-form.component';
 
